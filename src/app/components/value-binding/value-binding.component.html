@@ -1,0 +1,56 @@
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <strong> Value Binding</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row m-5">
+    <div class="col-12 ">
+        <ng-container *ngFor="let modelItem of model">
+            <div class="row">
+                <div class="col-6">
+                    <h5>
+                        <strong> {{ modelItem.label }} </strong>
+                    </h5>
+                </div>
+                <div class="col-6 text-center">
+                    <ng-container *ngIf="modelItem.elementType === 'radio'">
+                        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic"
+                             [(ngModel)]="modelItem.value">
+                            <ng-container *ngFor="let item of modelItem.items">
+                                <label ngbButtonLabel class="btn-primary">
+                                    <input ngbButton type="radio" [value]="item.conceptId"> {{ item.pt.term }}
+                                </label>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="modelItem.elementType === 'select'">
+                        <select class="custom-select" [(ngModel)]="modelItem.value">
+                            <option selected>Choose...</option>
+                            <ng-container *ngFor="let item of modelItem.items">
+                                <option [value]="item.conceptId">{{ item.pt.term }}</option>
+                            </ng-container>
+                        </select>
+                    </ng-container>
+                    <ng-container *ngIf="modelItem.elementType === 'typeahead'">
+                        <ng-template #rt let-r="result" let-t="term">
+                            <ngb-highlight [result]="r.pt.term" [term]="t"></ngb-highlight>
+                        </ng-template>
+                        <input type="text" class="form-control" [(ngModel)]="modelItem.value"
+                               [ngbTypeahead]="search(modelItem)" placeholder="Buscar un concepto" [resultTemplate]="rt"
+                               [inputFormatter]="formatter" />
+                    </ng-container>
+                </div>
+            </div>
+            <!-- <hr> -->
+            <!-- <pre>{{modelItem.value?.conceptId}}</pre> -->
+        </ng-container>
+    </div>""
+</div>
+<button class="btn btn-success" (click)="postcordinate()"> CALCULAR </button>
+
+{{ expression }}

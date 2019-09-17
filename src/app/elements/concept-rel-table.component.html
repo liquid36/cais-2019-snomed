@@ -1,0 +1,34 @@
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th> Tipo </th>
+            <th> Destino </th>
+            <th> Grupo </th>
+            <th> Característica </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rel of relationships">
+            <td>
+                <span class="badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+                    &nbsp;&nbsp;
+                </span>
+                &nbsp;&nbsp;
+                {{ rel.type.fsn.term }}
+            </td>
+            <td>
+                <span class="badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+                    {{ rel.target.definitionStatus !== 'PRIMITIVE' ? '≡' : '&nbsp;&nbsp;' }}
+                </span>
+                &nbsp;&nbsp;
+                {{ rel.target.fsn.term }}
+            </td>
+            <td>
+                {{ rel.groupId }}
+            </td>
+            <td>
+                {{ rel.characteristicType === 'PRIMITIVE' ? 'Definida' : 'Inferida' }}
+            </td>
+        </tr>
+    </tbody>
+</table>

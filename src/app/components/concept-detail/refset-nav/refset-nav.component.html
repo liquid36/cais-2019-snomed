@@ -1,0 +1,27 @@
+<ng-container *ngIf="(miembros$ | async) as miembros">
+    <table class="table table-bordered">
+        <thead>
+            <tr colspan="2">
+                <td>
+                    Simple Map Refset name
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of miembros.items">
+                <ng-container *ngIf="item.additionalFields.mapTarget">
+                    <td *ngIf=" (conceptos$[item.refsetId] | async) as refset ">
+                        <span class="badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+                            {{ refset.definitionStatus !== 'PRIMITIVE' ? '≡' : '&nbsp;&nbsp;' }}
+                        </span>
+                        {{ refset.pt.term }}
+                    </td>
+                    <td class="w-50 text-muted small-text result-item">
+                        {{ item.additionalFields.mapTarget }}
+                    </td>
+                </ng-container>
+            </tr>
+        </tbody>
+    </table>
+
+</ng-container>

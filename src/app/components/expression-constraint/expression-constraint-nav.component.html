@@ -1,0 +1,70 @@
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <strong>Expression Constraint Language</strong>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row m-4">
+    <div class="col-10">
+        <form>
+            <div class="form-group">
+                <label>
+                    <strong> Escribe tu expresion aqui: </strong>
+                </label>
+                <div class="btn-group w-100">
+                    <input name="textSearch" type="search" class="form-control w-100" placeholder="ECL query"
+                           autocomplete="off" [(ngModel)]="ecl">
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+    <div class="col-2">
+        <label style="display: block">
+            &nbsp;
+        </label>
+        <button class="btn btn-success" (click)="execute()"> RUN </button>
+    </div>
+</div>
+<div class="row m-4">
+    <div class="col-12">
+        <label>
+            <strong> Filtro por texto: </strong>
+        </label>
+        <div class="btn-group w-100">
+            <input type="search" class="form-control w-100" placeholder="text filter" autocomplete="off"
+                   [(ngModel)]="term">
+
+        </div>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>
+                FSN
+            </td>
+            <td>
+                ConceptID
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of concepts">
+            <td>
+                <span class=" badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+                    {{ item.definitionStatus !== 'PRIMITIVE' ? '≡' : '&nbsp;&nbsp;' }}
+                </span>
+                {{ item.pt.term }}
+            </td>
+            <td class="w-50 text-muted small-text result-item">
+                {{ item.conceptId }}
+            </td>
+        </tr>
+    </tbody>
+</table>

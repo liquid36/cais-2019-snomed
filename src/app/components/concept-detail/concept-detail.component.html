@@ -1,0 +1,31 @@
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <strong>Detalle del concepto</strong>
+            </div>
+        </div>
+    </div>
+    <ngb-tabset>
+        <ngb-tab title="Summary">
+            <ng-template ngbTabContent>
+                <app-summary-nav></app-summary-nav>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Detail">
+            <ng-template ngbTabContent>
+                <app-detail-nav></app-detail-nav>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Diagram">
+            <ng-template ngbTabContent>
+                <app-graph-nav></app-graph-nav>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Refset">
+            <ng-template ngbTabContent>
+                <app-refset-nav></app-refset-nav>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+</div>

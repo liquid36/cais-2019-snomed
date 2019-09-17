@@ -1,0 +1,23 @@
+<ng-container *ngIf="(conceptSelect$ | async) as concept">
+    <div class="row m-2">
+        <div class="col-12">
+            <h5>
+                <span class="badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+                    {{ concept.definitionStatus !== 'PRIMITIVE' ? '≡' : '&nbsp;&nbsp;' }}
+                </span>
+                &nbsp;&nbsp;
+                {{ concept.fsn.term }}
+            </h5>
+        </div>
+    </div>
+    <div class="row ml-2">
+        <div class="col-12">
+            SCTID: {{ concept.conceptId }},
+            {{  concept.definitionStatus.conceptId !== 'PRIMITIVE' ? 'Suficientemente definido' : 'Primitivo'  }}
+            {{ concept.active ? 'Activo' : 'Inactivo' }}.
+            <br />
+        </div>
+    </div>
+    <app-concept-desc-table [concept]="concept" [refSetLanguage]="refSetLanguage"></app-concept-desc-table>
+    <app-concept-rel-table [concept]="concept"></app-concept-rel-table>
+</ng-container>

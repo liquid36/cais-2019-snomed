@@ -1,0 +1,103 @@
+<div class="card card-default">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-8">
+                <strong>Búsqueda</strong>
+            </div>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <!-- <div class="col-4">
+                <div ngbDropdown>
+                    <button ngbDropdownToggle class="btn btn-success dropdown-toggle" type="button">
+                        Modo de Busqueda
+                    </button>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button ngbDropdownItem (click)="setSearchMode('fullText')">
+                            Modo de búsqueda de texto completo
+                        </button>
+                        <button ngbDropdownItem (click)="setSearchMode('partialMatching')">
+                            Modo de búsqueda de términos parciales
+                        </button>
+                        <button ngbDropdownItem (click)="setSearchMode('regex')">
+                            Modo de búsqueda de Expresiones Regulares
+                        </button>
+                    </div>
+                </div>
+                <div ngbDropdown class="mt-1">
+                    <button ngbDropdownToggle class="btn btn-success dropdown-toggle" type="button">
+                        Status
+                    </button>
+                    <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <button ngbDropdownItem (click)="setStatusFilter('activeOnly')">
+                            Solo componentes activos
+                        </button>
+                        <button ngbDropdownItem (click)="setStatusFilter('activeAndInactive')">
+                            Componentes activos e inactivos
+                        </button>
+                        <button ngbDropdownItem (click)="setStatusFilter('inactiveOnly')">
+                            Solo componetes inactivos
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="semanticFilter?.length > 0">
+                    <a class="badge badge-danger" href="#" (click)="setSemTag('')">
+                        {{ semanticFilter }} X
+                    </a>
+                </div>
+                <div class="card card-default mt-2" *ngIf="!semanticFilter && filters">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            Filtros por SemanticTag
+                        </h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item d-flex justify-content-between align-items-center"
+                               *ngFor="let item of filters.semanticTags | keyvalue" (click)="setSemTag(item.key)">
+                                {{ item.key }}
+                                <span class="badge badge-primary badge-pill">
+                                    {{ item.value }}
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="col-12">
+                <form>
+                    <div class="form-group">
+                        <label>
+                            <strong> Type at least 3 characters </strong>
+                        </label>
+                        <div class="btn-group w-100">
+                            <input name="textSearch" type="search" class="form-control w-100" placeholder="Search..."
+                                   autocomplete="off" [(ngModel)]="textSearch">
+                            <span class="searchclear glyphicon glyphicon-remove-circle"></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="card card-default" *ngIf="(this.results$ | async) as matches">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr *ngFor="let item of matches">
+                                <td class="w-50" (click)="onSelect(item.concept)">
+                                    <span class="badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+                                        {{ item.concept.definitionStatus !== 'PRIMITIVE' ? '≡' : '&nbsp;&nbsp;' }}
+                                    </span>
+                                    {{ item.term }}
+                                </td>
+                                <td class="w-50 text-muted small-text result-item">
+                                    {{ item.concept.fsn.term }}
+                                </td>
+                                <br>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
