@@ -1,0 +1,25 @@
+<div class="fsn-card">
+    <h5>
+        <span class="badge alert-warning" style="padding: 3px 7px;border-radius: 10px;">
+            {{ concept.definitionStatus !== 'PRIMITIVE' ? '≡' : '&nbsp;&nbsp;' }}
+        </span>
+        &nbsp;&nbsp;
+        {{ concept.fsn.term }}
+
+    </h5>
+    <h6>
+        SCTID: {{ concept.conceptId }}
+        <br />
+        <br />
+        {{ concept.conceptId }} | {{ concept.fsn.term }}
+    </h6>
+    <ng-container *ngFor="let desc of concept.descriptions">
+        <ng-container *ngIf="desc.active">
+            &nbsp;&nbsp;
+            <i> {{ desc.lang }} </i>
+            &nbsp;&nbsp;&nbsp;
+            {{ desc.term }}
+            <br>
+        </ng-container>
+    </ng-container>
+</div>

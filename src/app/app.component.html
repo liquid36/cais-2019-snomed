@@ -1,0 +1,53 @@
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="navbar-brand">
+        NG-SNOMED BROWSER
+    </div>
+</nav>
+<div class="container-fluid">
+    <div style="height: 100%;">
+        <as-split direction="horizontal">
+            <as-split-area size="640">
+                <ngb-tabset>
+                    <ngb-tab title="Busqueda">
+                        <ng-template ngbTabContent>
+                            <app-nav-busqueda></app-nav-busqueda>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Jerarquía">
+                        <ng-template ngbTabContent>
+                            <app-taxonomy-nav></app-taxonomy-nav>
+                        </ng-template>
+                    </ngb-tab>
+                    <!-- <ngb-tab title="Favoritos">
+                        <ng-template ngbTabContent>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Conjunto de Referencia">
+                        <ng-template ngbTabContent>
+                        </ng-template>
+                    </ngb-tab> -->
+                </ngb-tabset>
+            </as-split-area>
+            <as-split-area size="60">
+                <ngb-tabset>
+                    <ngb-tab title="Detalle del concepto">
+                        <ng-template ngbTabContent>
+                            <app-concept-detail></app-concept-detail>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="ECL">
+                        <ng-template ngbTabContent>
+                            <app-expression-constraint></app-expression-constraint>
+                        </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Binding">
+                        <ng-template ngbTabContent>
+                            <app-value-binding></app-value-binding>
+                        </ng-template>
+                    </ngb-tab>
+                </ngb-tabset>
+            </as-split-area>
+        </as-split>
+    </div>
+</div>
+<router-outlet></router-outlet>
